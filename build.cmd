@@ -4,15 +4,15 @@ bcp ^
     boost/container/flat_set.hpp ^
     boost/container/small_vector.hpp ^
     boost/container/static_vector.hpp ^
+    boost/circular_buffer.hpp ^
     boost/crc.hpp ^
     boost/icl/interval_map.hpp ^
     boost/locale/encoding_utf.hpp ^
     boost/optional.hpp ^
     boost/algorithm/string/replace.hpp  ^
-    boost/system/error_code.hpp ^
-    boost/system/system_error.hpp ^
     boost/process/async_pipe.hpp ^
     boost/stacktrace.hpp ^
+    boost/variant.hpp ^
     boost/archive/binary_iarchive.hpp ^
     boost/archive/binary_oarchive.hpp ^
     boost/serialization/array.hpp ^
@@ -31,6 +31,7 @@ bcp ^
     boost/serialization/shared_ptr.hpp ^
     boost/serialization/unique_ptr.hpp ^
     boost/serialization/weak_ptr.hpp ^
-    boost/iostreams/ ^
-    boost/url/ ^
+    boost/iostreams/stream.hpp ^
+    boost/iostreams/device/file_descriptor.hpp ^
+    boost/url.hpp ^
     --boost="%1" .
