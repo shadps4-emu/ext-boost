@@ -1,14 +1,10 @@
 bcp ^
-    boost/asio.hpp ^
-    boost/container/flat_map.hpp ^
     boost/container/flat_set.hpp ^
     boost/container/small_vector.hpp ^
     boost/container/static_vector.hpp ^
-    boost/crc.hpp ^
     boost/icl/interval_map.hpp ^
     boost/icl/split_interval_map.hpp ^
     boost/icl/separate_interval_set.hpp ^
-    boost/locale/encoding_utf.hpp ^
-    boost/algorithm/string/replace.hpp  ^
-    boost/process/async_pipe.hpp ^
+    boost/intrusive/list.hpp ^
+    boost/intrusive/set.hpp ^
     --boost="%1" .
