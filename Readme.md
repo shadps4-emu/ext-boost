@@ -1,4 +1,4 @@
-Boost libraries - trimmed down for Citra
+Boost libraries - trimmed down for shadPS4
 ========================================
 
 This is a subset of Boost v1.82.0 generated using the bcp tool. To get a list of boost modules guaranteed to exist, check the build script.
