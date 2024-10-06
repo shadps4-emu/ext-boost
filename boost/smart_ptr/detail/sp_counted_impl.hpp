@@ -24,6 +24,7 @@
 
 #include <boost/smart_ptr/detail/sp_counted_base.hpp>
 #include <boost/smart_ptr/detail/sp_noexcept.hpp>
+#include <boost/smart_ptr/detail/deprecated_macros.hpp>
 #include <boost/core/checked_delete.hpp>
 #include <boost/core/addressof.hpp>
 #include <boost/config.hpp>
@@ -133,13 +134,6 @@ public:
 #endif
 };
 
-//
-// Borland's Codeguard trips up over the -Vx- option here:
-//
-#ifdef __CODEGUARD__
-# pragma option push -Vx-
-#endif
-
 template<class P, class D> class BOOST_SYMBOL_VISIBLE sp_counted_impl_pd: public sp_counted_base
 {
 private:
@@ -156,19 +150,9 @@ public:
 
     // pre: d(p) must not throw
 
-#if !defined( BOOST_NO_CXX11_RVALUE_REFERENCES )
-
     sp_counted_impl_pd( P p, D & d ): ptr( p ), del( static_cast< D&& >( d ) )
     {
     }
-
-#else
-
-    sp_counted_impl_pd( P p, D & d ): ptr( p ), del( d )
-    {
-    }
-
-#endif
 
     sp_counted_impl_pd( P p ): ptr( p ), del()
     {
@@ -240,19 +224,9 @@ public:
 
     // pre: d( p ) must not throw
 
-#if !defined( BOOST_NO_CXX11_RVALUE_REFERENCES )
-
     sp_counted_impl_pda( P p, D & d, A a ): p_( p ), d_( static_cast< D&& >( d ) ), a_( a )
     {
     }
-
-#else
-
-    sp_counted_impl_pda( P p, D & d, A a ): p_( p ), d_( d ), a_( a )
-    {
-    }
-
-#endif
 
     sp_counted_impl_pda( P p, A a ): p_( p ), d_( a ), a_( a )
     {
@@ -265,15 +239,7 @@ public:
 
     void destroy() BOOST_SP_NOEXCEPT BOOST_OVERRIDE
     {
-#if !defined( BOOST_NO_CXX11_ALLOCATOR )
-
         typedef typename std::allocator_traits<A>::template rebind_alloc< this_type > A2;
-
-#else
-
-        typedef typename A::template rebind< this_type >::other A2;
-
-#endif
 
         A2 a2( a_ );
 
@@ -297,10 +263,6 @@ public:
         return &reinterpret_cast<char&>( d_ );
     }
 };
-
-#ifdef __CODEGUARD__
-# pragma option pop
-#endif
 
 } // namespace detail
 

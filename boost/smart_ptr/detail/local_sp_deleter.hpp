@@ -42,13 +42,9 @@ public:
     {
     }
 
-#if !defined( BOOST_NO_CXX11_RVALUE_REFERENCES )
-
     explicit local_sp_deleter( D&& d ) BOOST_SP_NOEXCEPT: d_( std::move(d) )
     {
     }
-
-#endif
 
     D& deleter() BOOST_SP_NOEXCEPT
     {
@@ -60,14 +56,10 @@ public:
         d_( p );
     }
 
-#if !defined( BOOST_NO_CXX11_NULLPTR )
-
-    void operator()( boost::detail::sp_nullptr_t p ) BOOST_SP_NOEXCEPT
+    void operator()( std::nullptr_t p ) BOOST_SP_NOEXCEPT
     {
         d_( p );
     }
-
-#endif
 };
 
 template<> class local_sp_deleter<void>
