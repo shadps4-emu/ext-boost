@@ -1,6 +1,0 @@
-set(BOOST_ROOT "${CMAKE_CURRENT_SOURCE_DIR}" CACHE STRING "")
-set(Boost_NO_SYSTEM_PATHS ON CACHE BOOL "")
-add_library(boost INTERFACE)
-target_include_directories(boost SYSTEM INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})
-target_include_directories(boost SYSTEM INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/libs/align/include/)
-add_library(Boost::headers ALIAS boost)

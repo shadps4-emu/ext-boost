@@ -9,8 +9,5 @@ bcp ^
     boost/icl/separate_interval_set.hpp ^
     boost/intrusive/list.hpp ^
     boost/intrusive/set.hpp ^
-    libs/align/include/boost/align/aligned_alloc.hpp ^
-    libs/align/include/boost/align/aligned_allocator.hpp ^
-    libs/align/include/boost/align/aligned_delete.hpp ^
     align ^
     --boost="%1" .
