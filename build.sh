@@ -11,6 +11,7 @@ bcp \
     boost/icl/separate_interval_set.hpp \
     boost/intrusive/list.hpp \
     boost/intrusive/set.hpp \
+    program_options \
     align \
     --boost="$1" .
 
