@@ -10,7 +10,6 @@ bcp ^
     boost/icl/separate_interval_set.hpp ^
     boost/intrusive/list.hpp ^
     boost/intrusive/set.hpp ^
-    boost/pointee.hpp ^
     align ^
     range ^
     optional ^
