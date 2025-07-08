@@ -1,23 +1,13 @@
 #!/bin/sh
+set -e
 
-bcp \
-    boost/asio/asio.hpp \
-    boost/container/flat_map.hpp \
-    boost/container/flat_set.hpp \
-    boost/container/list.hpp \
-    boost/container/small_vector.hpp \
-    boost/container/static_vector.hpp \
-    boost/icl/interval_map.hpp \
-    boost/icl/split_interval_map.hpp \
-    boost/icl/separate_interval_set.hpp \
-    boost/intrusive/list.hpp \
-    boost/intrusive/set.hpp \
-    align \
-    range \
-    optional \
-    utility \
-    tuple \
-    iterator \
-    --boost="$1" .
+BOOST_SRC="$1"
+if [ -z "$BOOST_SRC" ]; then
+    echo "Usage: $0 /path/to/boost"
+    exit 1
+fi
 
-find . -type f -print0 | xargs -0 dos2unix
+# Read all non-empty, non-comment lines into an array
+LIBS=$(grep -vE '^\s*#|^\s*$' boost_libs.txt | xargs)
+
+bcp $LIBS --boost="$BOOST_SRC" .
