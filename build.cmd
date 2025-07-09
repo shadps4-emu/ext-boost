@@ -1,19 +1,16 @@
-bcp ^
-    boost/asio/asio.hpp ^
-    boost/container/flat_map.hpp ^
-    boost/container/flat_set.hpp ^
-    boost/container/list.hpp ^
-    boost/container/small_vector.hpp ^
-    boost/container/static_vector.hpp ^
-    boost/icl/interval_map.hpp ^
-    boost/icl/split_interval_map.hpp ^
-    boost/icl/separate_interval_set.hpp ^
-    boost/intrusive/list.hpp ^
-    boost/intrusive/set.hpp ^
-    align ^
-    range ^
-    optional ^
-    utility ^
-    tuple ^
-    iterator ^
-    --boost="%1" .
+@echo off
+setlocal enabledelayedexpansion
+
+if "%~1"=="" (
+    echo Usage: %0 path\to\boost
+    exit /b 1
+)
+
+set BOOST_SRC=%1
+
+set LIBS=
+for /f "usebackq delims=" %%a in ("boost_libs.txt") do (
+    set LIBS=!LIBS! %%a
+)
+
+bcp %LIBS% --boost="%BOOST_SRC%" .
